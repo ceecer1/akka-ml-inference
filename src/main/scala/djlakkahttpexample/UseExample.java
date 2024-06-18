@@ -59,8 +59,7 @@ public final class UseExample {
         }
     }
 
-
-    public static float[][] predict(List<String> inputs)
+    public static String[] predict(List<String> inputs)
             throws TranslateException {
         logger.info("Reached for inference with inputs {}", inputs);
         Predictor<String[], float[][]> predictor = predictorHolder.get();
@@ -68,7 +67,21 @@ public final class UseExample {
             predictor = model.newPredictor();
             predictorHolder.set(predictor);
         }
-        return predictor.predict(inputs.toArray(new String[0]));
+//        return predictor.predict(inputs.toArray(new String[0]));
+        float[][] embeddings = predictor.predict(inputs.toArray(new String[0]));
+        return convertEmbeddingsToString(embeddings);
+    }
+
+    private static String[] convertEmbeddingsToString(float[][] embeddings) {
+        String[] result = new String[embeddings.length];
+        for (int i = 0; i < embeddings.length; i++) {
+            StringBuilder sb = new StringBuilder();
+            for (float emb : embeddings[i]) {
+                sb.append(emb).append(" ");
+            }
+            result[i] = sb.toString().trim();
+        }
+        return result;
     }
 
     private static final class MyTranslator implements Translator<String[], float[][]> {

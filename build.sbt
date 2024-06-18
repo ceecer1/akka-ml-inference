@@ -28,10 +28,11 @@ run / javaOptions ++= sys.props
 
 Global / cancelable := false // ctrl-c
 
-//javaOptions ++= Seq(
+javaOptions ++= Seq(
 //  "-Dorg.tensorflow.NativeLibrary.DEBUG=1",
 //  "-Dorg.bytedeco.javacpp.logger.debug=true"
-//)
+//  "-Dai.djl.default_engine=PyTorch"
+)
 
 val AkkaVersion = "2.9.2"
 val AkkaHttpVersion = "10.6.1"
@@ -56,17 +57,29 @@ libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-cluster-sharding-typed" % AkkaVersion,
       "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
       "com.typesafe.akka" %% "akka-stream-testkit" % AkkaVersion % Test,
-
-      "ai.djl" % "api" % "0.28.0",
-      "org.tensorflow" % "tensorflow-core-native" % "1.0.0-rc.1" classifier "macosx-arm64",
-//      "ai.djl.tensorflow" % "tensorflow-native-auto" % "2.4.1",
-      "ai.djl.tensorflow" % "tensorflow-model-zoo" % "0.28.0",
-
-//      "ai.djl.tensorflow" % "tensorflow-engine" % "0.28.0",
-
       "com.lightbend.akka.management" %% "akka-management" % AkkaManagementVersion,
       "com.typesafe.akka" %% "akka-http" % AkkaHttpVersion,
       "com.typesafe.akka" %% "akka-http-spray-json" % AkkaHttpVersion,
-      "ch.qos.logback" % "logback-classic" % "1.2.13",
-      "org.scalatest" %% "scalatest" % "3.1.2" % Test,
+
+      "ai.djl" % "api" % "0.28.0",
+      "org.tensorflow" % "tensorflow-core-native" % "1.0.0-rc.1" classifier "macosx-arm64",
+      "ai.djl.tensorflow" % "tensorflow-model-zoo" % "0.28.0",
+      //somehow tensorflow-native-auto is not needed
+      //      "ai.djl.tensorflow" % "tensorflow-native-auto" % "2.4.1",
+      //tensorflow-engine is not needed too
+      //      "ai.djl.tensorflow" % "tensorflow-engine" % "0.28.0",
+
+        // not needed for mac m1, may be needed for other os
+//      "ai.djl.pytorch" % "pytorch-engine" % "0.28.0" % Runtime,
+
+      //for hugging face tokenizer
+      "ai.djl.huggingface" % "tokenizers" % "0.28.0",
+//      "ai.djl.pytorch" % "pytorch-model-zoo" % "0.28.0",
+      //for mac m1
+      //https://docs.djl.ai/engines/pytorch/pytorch-engine/index.html#macos-m1
+//      "ai.djl.pytorch" % "pytorch-native-cpu" % "2.2.2" % Runtime classifier "osx-aarch64",
+//      "ai.djl.pytorch" % "pytorch-jni" % "2.2.2-0.28.0" % Runtime,
+
+      "ch.qos.logback" % "logback-classic" % "1.5.6",
+      "org.scalatest" %% "scalatest" % "3.2.18" % Test,
     )
