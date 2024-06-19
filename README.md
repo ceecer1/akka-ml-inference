@@ -1,6 +1,8 @@
 
 ### An example of how to use Deep Java Library [DJL.ai](http://wwww.djl.ai) in Scala's Akka-Http framework
 
+First, download model folders from S3 bucket akka-huggingface-models and copy all three folders into src/main/resources
+
 
 The endpoint of POST /inferences
 ```json
@@ -45,3 +47,7 @@ export TF_NUM_INTRAOP_THREADS=1
 
 For more information on optimization, you can check [here](
 ).
+
+
+
+
