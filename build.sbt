@@ -77,8 +77,8 @@ libraryDependencies ++= Seq(
 //      "ai.djl.pytorch" % "pytorch-model-zoo" % "0.28.0",
       //for mac m1
       //https://docs.djl.ai/engines/pytorch/pytorch-engine/index.html#macos-m1
-//      "ai.djl.pytorch" % "pytorch-native-cpu" % "2.2.2" % Runtime classifier "osx-aarch64",
-//      "ai.djl.pytorch" % "pytorch-jni" % "2.2.2-0.28.0" % Runtime,
+      "ai.djl.pytorch" % "pytorch-native-cpu" % "2.2.2" % Runtime classifier "osx-aarch64",
+      "ai.djl.pytorch" % "pytorch-jni" % "2.2.2-0.28.0" % Runtime,
 
       "ch.qos.logback" % "logback-classic" % "1.5.6",
       "org.scalatest" %% "scalatest" % "3.2.18" % Test,

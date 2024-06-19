@@ -1,10 +1,6 @@
-import ai.djl.Application;
-import ai.djl.Device;
+
 import ai.djl.ModelException;
 import ai.djl.inference.Predictor;
-import ai.djl.modality.nlp.Vocabulary;
-import ai.djl.modality.nlp.bert.BertFullTokenizer;
-import ai.djl.modality.nlp.bert.BertToken;
 import ai.djl.modality.nlp.qa.QAInput;
 import ai.djl.repository.zoo.Criteria;
 import ai.djl.repository.zoo.ZooModel;
@@ -13,6 +9,7 @@ import ai.djl.translate.TranslateException;
 
 import java.io.IOException;
 import java.nio.file.Paths;
+
 
 public class HuggingFaceBertInference {
     public static void main(String[] args) throws IOException, TranslateException, ModelException {
