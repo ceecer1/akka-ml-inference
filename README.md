@@ -3,6 +3,10 @@
 
 First, download model folders from S3 bucket akka-huggingface-models and copy all three folders into src/main/resources
 
+You can then run inference on huggingface models from:
+1. [HuggingFaceQaInference.java](src%2Fmain%2Fscala%2FHuggingFaceQaInference.java)
+2. [HuggingFaceBertInference.java](src%2Fmain%2Fscala%2FHuggingFaceBertInference.java)
+
 
 The endpoint of POST /inferences
 ```json
