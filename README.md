@@ -15,25 +15,29 @@ which shoud compute text embedding and return embedding in string format
 }
 ```
 
-or cURL
-```shell script
+or cURLs
+```sh
 curl --location --request POST 'http://127.0.0.1:8080/inferences' \
 --header 'Content-Type: application/json' \
 --data-raw '{"text": "whatever"}'
 ```
 
 
-Install SBT, for macOS - https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Mac.html
+Install SBT, for macOS, 
+
+```sh
+brew install sbt
+```
 
 Run service:
-```bash
+```sh
 sbt run
 ```
 
 You should see `Server online at http://127.0.0.1:8080/`
 
 Run unit tests:
-```bash
+```sh
 sbt test
 ```
 
